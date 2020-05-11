@@ -31,9 +31,13 @@ module Lda
     end
 
     def tokenize(text)
-      # remove everything but letters and ' and leave only single spaces
-      clean_text = text.gsub(/[^a-zäöüß'-]+/i, ' ').gsub(/\s+/, ' ').downcase
-      @tokens = handle(clean_text.split(' '))
+      @tokens = if text.is_a?(Array)
+                  text
+                else
+                  # remove everything but letters and ' and leave only single spaces
+                  clean_text = text.gsub(/[^a-zäöüß'-]+/i, ' ').gsub(/\s+/, ' ').downcase
+                  handle(clean_text.split(' '))
+                end
       nil
     end
   end
