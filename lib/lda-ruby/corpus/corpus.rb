@@ -14,7 +14,9 @@ module Lda
                     else
                       stop_word_list
                     end
-      @stopwords = YAML.load_file(@stopwords)
+      if @stopwords.is_a?(String)
+        @stopwords = YAML.load_file(@stopwords)
+      end
       @stopwords.map!(&:strip)
     end
 
