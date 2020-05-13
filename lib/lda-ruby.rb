@@ -13,6 +13,7 @@ require 'lda-ruby/vocabulary'
 module Lda
   class Lda
     attr_reader :vocab, :corpus
+    attr_accessor :num_topics, :max_iter, :convergence, :em_max_iter, :em_convergence, :init_alpha, :est_alpha
 
     def initialize(corpus)
       load_default_settings
